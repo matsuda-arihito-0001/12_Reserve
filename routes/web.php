@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LivewireTestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::controller(LivewireTestController::class)
+    ->prefix('livewire-test')
+    ->name('livewire-test.')
+    ->group(function() {
+        Route::get('index', 'index')->name('index');
+        Route::get('register', 'register')->name('register');
 });
 
 require __DIR__.'/auth.php';
