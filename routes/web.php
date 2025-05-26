@@ -30,6 +30,25 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::prefix('manager')
+    ->middleware('can:manager-higher')
+    ->group(function() {
+        Route::get('index', function()
+        {
+            dd('manager');
+        });
+        // Route::get('index', 'index')->name('index');
+    });
+Route::middleware('can:user-higher')
+    ->group(function() {
+        Route::get('index', function()
+        {
+            dd('user');
+        });
+        // Route::get('index', 'index')->name('index');
+    });
+
+
 Route::controller(LivewireTestController::class)
     ->prefix('livewire-test')
     ->name('livewire-test.')
