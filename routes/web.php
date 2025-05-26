@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LivewireTestController;
 use App\Http\Controllers\AlpineTestController;
+use App\Http\Controllers\EventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,12 +34,9 @@ Route::middleware('auth')->group(function () {
 Route::prefix('manager')
     ->middleware('can:manager-higher')
     ->group(function() {
-        Route::get('index', function()
-        {
-            dd('manager');
-        });
-        // Route::get('index', 'index')->name('index');
+        Route::resource('events', EventController::class);
     });
+
 Route::middleware('can:user-higher')
     ->group(function() {
         Route::get('index', function()
@@ -47,7 +45,6 @@ Route::middleware('can:user-higher')
         });
         // Route::get('index', 'index')->name('index');
     });
-
 
 Route::controller(LivewireTestController::class)
     ->prefix('livewire-test')
