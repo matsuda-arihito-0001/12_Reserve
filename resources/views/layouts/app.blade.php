@@ -13,12 +13,14 @@
 
         <!-- Scripts -->
         @vite([
-            'resources/css/app.css', 
+            'resources/css/app.css',
             'resources/js/app.js',
             'resources/js/flatpickr.js',
             ])
 
         <!-- Styles -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
         @livewireStyles
     </head>
     <body class="font-sans antialiased">
@@ -44,6 +46,7 @@
 
         @stack('modals')
 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         @livewireScripts
     </body>
 </html>
